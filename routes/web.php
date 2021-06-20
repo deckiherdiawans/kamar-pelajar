@@ -23,19 +23,19 @@ Route::view('/kontak', 'umum.kontak')->name('kontak');
 Route::view('/covid19', 'umum.covid19')->name('covid19');
 
 Route::get('/kamar', 'KamarController@index')->name('kamar');
-Route::get('/kamar/{kamar}', 'KamarController@showOneRoom')->name('detail.kamar');
+Route::get('/kamar/k/{kota}', 'KamarController@showAllByCity')->name('kamar.kota');
+Route::get('/kamar/n/{negara}', 'KamarController@showAllByNation')->name('kamar.negara');
+Route::get('/kamar/{kamar}', 'KamarController@showOneRoom')->name('kamar.detail');
 Route::get('/kamar/baru', 'KamarController@create')->name('kamar.baru');
 Route::post('/kamar/baru', 'KamarController@store')->name('kamar.store');
-Route::get('/kamar/filters', 'KamarController@filter');
-Route::get('/kamar/n/{negara}', 'KamarController@showAllByNegara');
-Route::get('/kamar/k/{kota}', 'KamarController@showAllByKota');
+Route::get('/kamar/filters', 'KamarController@filter')->name('kamar.filter');
 Route::view('/kamar/ketentuan', 'kamar/ketentuan')->name('kamar.ketentuan');
 
 Auth::routes(['verify' => true]);
 
 Route::group(['middleware' => ['auth','verified']], function () {
     Route::get('/kamar/saya', 'KamarController@indexKamarHost')->name('kamar.saya');
-    Route::get('/kamar/{kamarId}/edit', 'KamarController@editKamar')->name('kamar.edit');
+    Route::get('/kamar/{kamar}/edit', 'KamarController@editKamar')->name('kamar.edit');
     
     Route::get('/profile', 'ProfileController@index')->name('profile');
     Route::post('/profile', 'ProfileController@update')->name('profile.update');

@@ -9,7 +9,7 @@
 @endsection
 
 @section('banner')
-    <img src="{{URL::to('images/kamar/terang/kayu.jpg')}}" class="img-fluid rounded" alt="...">
+    <img src="{{ URL::to('images/kamar/terang/kayu.jpg') }}" class="img-fluid rounded" alt="...">
 @endsection
 
 @section('isi')
@@ -20,18 +20,13 @@
     @endif
 
     <div class="mb-4">
-        <select onchange="pilihNegara();" id="dropdownNegara">
+        <select onchange="pilihNegara()" id="dropdownNegara" title="Pilih Negara">
             <option value="#">-Negara-</option>
-            @if(!empty($negara))
             @foreach($negara as $data)
-            <option value="{{$data->id}}"
-                @if (!empty($query))
-                {{ $query[0][2] ==  $data->id ? "selected" : "" }}
-                @endif>
-                {{$data->negara->nama ?? null}}
+            <option value="{{ $data->negara->id }}" @if(!empty($query)) {{ $query[0][2] ==  $data->id ? 'selected' : '' }} @endif>
+                {{ $data->negara->nama ?? null }}
             </option>
             @endforeach
-            @endif
         </select>
 
         <div class="form-check form-switch mt-3">
@@ -40,23 +35,19 @@
         </div>
 
        {{--
-       <select onchange="pilihKota();" id="dropdownKota">
+       <select onchange="pilihKota()" id="dropdownKota" title="Pilih Kota">
             <option value="">-Kota-</option>
-            @if(!empty($kota))
             @foreach ($kota as $data)
-            <option value="{{$data->kota_id}}"
-                @if (!empty($query))
-                {{ $query[0][2] ==  $data->kota_id ? " selected" : "" }}
-                @endif>
-                {{$data->kota}}</option>
+            <option value="{{ $data->kota_id }}" @if(!empty($query)) {{ $query[0][2] ==  $data->kota_id ? " selected" : "" }} @endif>
+                {{ $data->kota->nama ?? null }}
+            </option>
             @endforeach
-            @endif
         </select>
         --}}
     </div> 
 
     {{-- Style: Table --}}
-    <table  class="table table-striped" style="display: none" >
+    <table  class="table table-striped d-none">
         <thead>
             <tr>
                 <th scope="col">Alamat</th>
@@ -85,9 +76,9 @@
                 {{-- <img src="images/kamar/gelap/perapian.jpg" class="card-img-top" alt="..."> --}}
                 <div class="card-body position-relative">
                     <h5 class="card-title">{{$room->alamat}}</h5>
-                    <p class="card-text mb-2" style="font-size: 14px"><i class="bi bi-geo-alt-fill"></i> {{$room->kota->nama ?? null}}, {{$room->negara->nama ?? null}}</p>
+                    <p class="card-text mb-2 fs-14"><i class="bi bi-geo-alt-fill"></i> {{$room->kota->nama ?? null}}, {{$room->negara->nama ?? null}}</p>
                     <p class="card-text mb-0">{{ ($room->negara->mata_uang ?? null) . ($room->harga ?? null) }}</p>
-                    <a class="btn btn-outline-secondary" style="float: right;" href="{{URL::to('/')}}/kamar/{{$room->id}}" role="button">Detail <i class="bi bi-arrow-right"></i></a>
+                    <a class="btn btn-outline-secondary float-right" href="{{URL::to('/')}}/kamar/{{$room->id}}" role="button">Detail <i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
         </div>

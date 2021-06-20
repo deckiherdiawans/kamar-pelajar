@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Negara;
+use App\Negara;
 
 class Kota extends Model
 {
