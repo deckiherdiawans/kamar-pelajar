@@ -37,7 +37,6 @@
         </form>
         --}}
 
-
         @auth
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -58,10 +57,7 @@
                onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}
             </a>
           </li>
-        </ul>
-
-
- 
+        </ul> 
         @else
         <div class="d-flex">
           <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
@@ -70,8 +66,6 @@
           <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
         </div>
         @endauth
-
-
       </div>
     </div>
   </nav>

@@ -1,0 +1,12 @@
+.row .col-md-4 {
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.card-body {
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    justify-content: space-between;
+}

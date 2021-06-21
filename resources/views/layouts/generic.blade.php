@@ -17,25 +17,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
-
   <!-- Custom styles for this template -->
+  <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
   <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/decki-custom.css') }}" rel="stylesheet">
 </head>
+
 <body class="bg-light">
   @include('layouts.parts.header')
   <main>
@@ -45,7 +32,7 @@
     <div class="text-center mb-5 ">
       <label class="border-top pt-4">@yield('subjudul')</label></div>
       <div class="container mb-5">
-        <div class="row justify-content-center ">
+        <div class="row justify-content-center">
           <div class="col-10">
             <div class="text-center">
                 @yield('banner')
@@ -63,6 +50,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
   </script>
+
   @yield('custom-script')
 </body>
 </html>
