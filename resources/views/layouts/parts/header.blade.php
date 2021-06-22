@@ -15,8 +15,10 @@
             <a class="nav-link {{ Route::currentRouteName() == 'kamar' || Route::currentRouteName() == 'kamar.kota' || Route::currentRouteName() == 'kamar.negara' || Route::currentRouteName() == 'kamar.detail' ? 'active' : '' }}" href="{{ route('kamar') }}">Cari kamar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('kamar.baru') ? 'active' : '' }}" 
-            href="{{ route('kamar.baru') }}">Daftar sebagai host</a>
+            <a class="nav-link {{ Route::currentRouteName() == 'desa' ? 'active' : '' }}" href="{{ route('desa') }}">Desa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('kamar.baru') ? 'active' : '' }}" href="{{ route('kamar.baru') }}">Daftar sebagai host</a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ request()->is('faq') ? 'active' : ''}}" href="{{ route('faq') }}">FAQ</a>

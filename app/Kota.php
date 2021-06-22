@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Negara;
+use App\Desa;
 
 class Kota extends Model
 {
@@ -17,5 +18,10 @@ class Kota extends Model
     public function negara()
     {
         return $this->hasOne(Negara::class, 'id', 'negara_id');
+    }
+
+    public function desa()
+    {
+        return $this->belongsTo(Desa::class);
     }
 }

@@ -30,6 +30,7 @@ Route::get('/kamar/baru', 'KamarController@create')->name('kamar.baru');
 Route::post('/kamar/baru', 'KamarController@store')->name('kamar.store');
 Route::get('/kamar/filters', 'KamarController@filter')->name('kamar.filter');
 Route::view('/kamar/ketentuan', 'kamar/ketentuan')->name('kamar.ketentuan');
+Route::get('/desa', 'DesaController@index')->name('desa');
 
 Auth::routes(['verify' => true]);
 
