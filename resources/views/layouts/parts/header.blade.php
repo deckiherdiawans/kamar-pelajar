@@ -17,18 +17,15 @@
           <li class="nav-item">
             <a class="nav-link {{ Route::currentRouteName() == 'desa' ? 'active' : '' }}" href="{{ route('desa') }}">Desa</a>
           </li>
+          {{--
           <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('kamar.baru') ? 'active' : '' }}" href="{{ route('kamar.baru') }}">Daftar sebagai host</a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ request()->is('faq') ? 'active' : ''}}" href="{{ route('faq') }}">FAQ</a>
           </li>
-          {{--
           <li class="nav-item">
             <a class="nav-link" href="{{ route('kontak') }}">Kontak</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
           --}}
         </ul>
@@ -40,33 +37,44 @@
         --}}
 
         @auth
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="{{ route('profile') }}" class="nav-link {{ request()->is('profile') ? 'active' : '' }}">Profil</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Kelola kamar
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{{ route('kamar.saya') }}">Kamar saya</a></li>
-              <li><a class="dropdown-item" href="{{ route('kamar.baru') }}">Daftarkan kamar baru</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout') }}"
-               onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}
-            </a>
-          </li>
-        </ul> 
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a href="{{ route('profile') }}" class="nav-link {{ request()->is('profile') ? 'active' : '' }}">Profil</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Kelola kamar
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{{ route('kamar.saya') }}">Kamar saya</a></li>
+                <li><a class="dropdown-item" href="{{ route('kamar.baru') }}">Daftarkan kamar baru</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('logout') }}"
+                onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}
+              </a>
+            </li>
+          </ul> 
         @else
-        <div class="d-flex">
-          <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
-        </div> &nbsp;
-        <div class="d-flex">
-          <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
-        </div>
+          @php $route = Route::currentRouteName() @endphp
+          @if ($route == 'login')
+            <div class="d-flex">
+              <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
+            </div>
+          @elseif ($route == 'register')
+            <div class="d-flex">
+              <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+            </div>
+          @else
+            <div class="d-flex">
+              <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+            </div> &nbsp;
+            <div class="d-flex">
+              <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
+            </div>
+          @endif
         @endauth
       </div>
     </div>

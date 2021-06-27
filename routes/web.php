@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +22,15 @@ Route::view('/partner', 'umum.partnership')->name('partner');
 Route::view('/faq', 'umum.faq')->name('faq');
 Route::view('/kontak', 'umum.kontak')->name('kontak');
 Route::view('/covid19', 'umum.covid19')->name('covid19');
+Route::view('/kamar/ketentuan', 'kamar/ketentuan')->name('ketentuan');
 
 Route::get('/kamar', 'KamarController@index')->name('kamar');
 Route::get('/kamar/k/{kota}', 'KamarController@showAllByCity')->name('kamar.kota');
 Route::get('/kamar/n/{negara}', 'KamarController@showAllByNation')->name('kamar.negara');
 Route::get('/kamar/{kamar}', 'KamarController@showOneRoom')->name('kamar.detail');
+Route::get('/kamar/filters', 'KamarController@filter')->name('kamar.filter');
 Route::get('/kamar/baru', 'KamarController@create')->name('kamar.baru');
 Route::post('/kamar/baru', 'KamarController@store')->name('kamar.store');
-Route::get('/kamar/filters', 'KamarController@filter')->name('kamar.filter');
-Route::view('/kamar/ketentuan', 'kamar/ketentuan')->name('kamar.ketentuan');
 Route::get('/desa', 'DesaController@index')->name('desa');
 
 Auth::routes(['verify' => true]);
@@ -42,8 +43,8 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::post('/profile', 'ProfileController@update')->name('profile.update');
 });
 
-Route::redirect('/t/oprec',  'https://docs.google.com/forms/d/e/1FAIpQLScTLKfFP1xXEnKjf7haNsZnnf9kPF1v8i977yBF3XLHHQUh7w/viewform?usp=sf_link');
-Route::redirect('/oprec',  'https://docs.google.com/forms/d/e/1FAIpQLScTLKfFP1xXEnKjf7haNsZnnf9kPF1v8i977yBF3XLHHQUh7w/viewform?usp=sf_link');
-Route::redirect('/karier',  'https://karier.kamarpelajar.com')->name('karier');
+Route::redirect('/t/oprec', 'https://docs.google.com/forms/d/e/1FAIpQLScTLKfFP1xXEnKjf7haNsZnnf9kPF1v8i977yBF3XLHHQUh7w/viewform?usp=sf_link');
+Route::redirect('/oprec', 'https://docs.google.com/forms/d/e/1FAIpQLScTLKfFP1xXEnKjf7haNsZnnf9kPF1v8i977yBF3XLHHQUh7w/viewform?usp=sf_link');
+Route::redirect('/karier', 'https://karier.kamarpelajar.com')->name('karier');
 
 Route::view('/links', 'umum.links');
