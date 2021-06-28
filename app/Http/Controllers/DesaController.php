@@ -11,6 +11,6 @@ class DesaController extends Controller
     {
         $desa = Desa::orderBy('nama')->get();
 
-        return view('kamar.desa', compact('desa'));
+        return view('desa.desa', compact('desa'));
     }
 }

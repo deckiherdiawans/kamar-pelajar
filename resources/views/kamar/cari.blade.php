@@ -29,9 +29,9 @@
             @endforeach
         </select>
 
-        <div class="form-check form-switch mt-3">
-            <input class="form-check-input" type="checkbox" id="toggleView">
-            <label class="form-check-label" for="toggleView">Change to Table View</label>
+        <div class="custom-control custom-switch mt-4">
+            <input class="custom-control-input" type="checkbox" id="toggleView">
+            <label class="custom-control-label" for="toggleView">Change to Table View</label>
         </div>
 
         {{--
@@ -47,31 +47,33 @@
     </div> 
 
     {{-- Style: Table --}}
-    <table class="table table-striped d-none">
-        <thead>
-            <tr>
-                <th scope="col">Alamat</th>
-                <th scope="col">Kota</th>
-                <th scope="col">Harga</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($kamar as $room)
-            <tr>
-                <td>{{ $room->alamat }} </td>
-                <td>{{ $room->kota->nama ?? null }} </td>
-                <td>{{ ($room->negara->mata_uang ?? null) . ($room->harga ?? null) }}</td>
-                <td><a href="{{ URL::to('/') }}/kamar/{{ $room->id }}">Detail</a></td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-striped d-none">
+            <thead>
+                <tr>
+                    <th class="align-middle">Alamat</th>
+                    <th class="align-middle">Kota</th>
+                    <th class="align-middle">Harga</th>
+                    <th class="align-middle text-center">Rincian</th> 
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($kamar as $room)
+                <tr>
+                    <td class="align-middle">{{ $room->alamat }}</td>
+                    <td class="align-middle">{{ $room->kota->nama ?? null }}</td>
+                    <td class="align-middle">{{ ($room->negara->mata_uang ?? null) . ($room->harga ?? null) }}</td>
+                    <td class="align-middle text-center"><a href="{{ URL::to('/') }}/kamar/{{ $room->id }}">Detail</a></td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
     {{-- 3 kolom --}}
     <div class="row grid-kamar justify-content-center">
         @foreach ($kamar as $room)
-        <div class="col-md-4">
+        <div class="col-md-4 w-auto">
             <div class="card mb-4">
                 {{-- <img src="images/kamar/gelap/perapian.jpg" class="card-img-top" alt="..."> --}}
                 <div class="card-body">
@@ -86,7 +88,7 @@
     </div> 
 @endsection
 
-@section('custom-script')
+@push('custom-script')
     <script type="text/javascript">
         function pilihNegara() {
             val = document.getElementById("dropdownNegara").value;
@@ -117,4 +119,4 @@
             }
         })
     </script>
-@endsection
+@endpush
