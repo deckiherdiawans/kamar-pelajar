@@ -28,7 +28,7 @@
   @include('layouts.parts.header')
 
   <main>
-    <div class="text-center mt-5 mb-4 ">
+    <div class="text-center mt-5 mb-4">
       <h1>@yield('judul')</h1>
     </div>
     <div class="text-center mb-5 ">

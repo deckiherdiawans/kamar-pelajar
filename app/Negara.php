@@ -57,5 +57,5 @@ class Negara extends Model
         'mata_uang' => 'required|string|max:191',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
-    ];   
+    ];
 }
